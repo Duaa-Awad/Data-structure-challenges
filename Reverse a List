@@ -1,0 +1,19 @@
+void main() {
+  List<int> originalList = [1, 2, 3, 4, 5];
+
+  print("Original List: $originalList");
+
+  // Call the function to reverse and print the list
+  reverseAndPrintList(originalList);
+}
+
+void reverseAndPrintList(List<int> inputList) {
+  // Step 1: Create a copy of the original list
+  List<int> reversedList = List.from(inputList);
+
+  // Step 2: Use the `reversed` method to reverse the list in-place
+  reversedList = reversedList.reversed.toList();
+
+  // Step 3: Print the reversed list
+  print("Reversed List: $reversedList");
+}
