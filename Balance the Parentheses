@@ -1,0 +1,34 @@
+void main() {
+  String example1 = "(a + b) * (c - d)";
+  String example2 = "((x + y) * z";
+  
+  print("Example 1 is balanced: ${areParenthesesBalanced(example1)}");
+  print("Example 2 is balanced: ${areParenthesesBalanced(example2)}");
+}
+
+bool areParenthesesBalanced(String input) {
+  // Use a stack to keep track of opening parentheses
+  List<String> stack = [];
+
+  // Iterate through each character in the input string
+  for (int i = 0; i < input.length; i++) {
+    String currentChar = input[i];
+
+    if (currentChar == '(') {
+      // If an opening parenthesis is encountered, push it onto the stack
+      stack.add(currentChar);
+    } else if (currentChar == ')') {
+      // If a closing parenthesis is encountered, check if there is a matching opening parenthesis
+      if (stack.isEmpty) {
+        // No matching opening parenthesis found
+        return false;
+      } else {
+        // Pop the top element from the stack
+        stack.removeLast();
+      }
+    }
+  }
+
+  // If the stack is empty, all opening parentheses have a matching closing parenthesis
+  return stack.isEmpty;
+}
